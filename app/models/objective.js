@@ -23,12 +23,16 @@ const dataSchema = new mongoose.Schema({
     minValue: {
         type: Number
     },
-    category: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'category'
-    },
-    users: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'user'
-    }
+    category: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'category'
+        },
+    ],
+    users: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'user'
+        }
+    ]
 })
 
 module.exports = mongoose.model('objective', dataSchema)

@@ -1,10 +1,7 @@
-const express = require('express');
-const Objecttive = require('../models/objective');
+const Objective = require("../models/objective")
 
-const router = express.Router();
-
-router.post('/post', async (req, res) => {
-    const data = new Objecttive({
+create = async (req, res) => {
+    const data = new Objective({
         name: req.body.name,
         icon: req.body.icon,
         color: req.body.color,
@@ -22,17 +19,19 @@ router.post('/post', async (req, res) => {
     catch (error) {
         res.status(400).json({ message: error.message })
     }
-})
+}
 
-router.get('/all', async (req, res) => {
+getAll = async (req, res) => {
     try {
-        const data = await Objecttive.find();
+        const data = await Objective.find();
         res.json(data)
     }
     catch (error) {
         res.status(500).json({ message: error.message })
     }
-})
+}
 
-
-module.exports = router;
+module.exports = {
+    create,
+    getAll
+}

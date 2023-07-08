@@ -15,7 +15,6 @@ const dataSchema = new mongoose.Schema({
     company: {
         type: String
     },
-
     place: {
         lat: {
             required: true,
@@ -26,15 +25,24 @@ const dataSchema = new mongoose.Schema({
             type: String
         }
     },
-    objective: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'objective'
-    },
-    category: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'category'
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'category'
-    }
+    objective: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'objective'
+        },
+    ],
+    category: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'category'
+        },
+    ],
+    user: [
+        {
+            type: mongoose.Schema.Types.ObjectId, ref: 'user'
+        }
+    ]
+
+
+
 })
 
 module.exports = mongoose.model('item', dataSchema)
